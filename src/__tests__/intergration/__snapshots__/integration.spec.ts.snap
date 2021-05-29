@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tasks should be able to create a task 1`] = `
+Object {
+  "data": Object {
+    "createTask": Object {
+      "_id": "60b1ec4f057d7a313c738e92",
+      "description": "description",
+      "isComplete": false,
+      "sharedWith": Array [],
+      "title": "new Task",
+      "user": Object {
+        "_id": "60b09157c813ff0f9c3b5569",
+      },
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Tasks should be able to delete his own task 1`] = `
+Object {
+  "data": Object {
+    "deleteTask": Object {
+      "_id": "60b15f1ee030c4362cdd7ff8",
+      "user": Object {
+        "email": "email@email.com",
+      },
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Tasks should not be able to delete shared task 1`] = `
+Object {
+  "data": null,
+  "errors": Array [
+    [GraphQLError: NOT AUTHORIZED],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Tasks should not return other user's task 1`] = `
+Object {
+  "data": null,
+  "errors": Array [
+    [GraphQLError: NOT_AUTHORIZED],
+  ],
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Tasks should return a shared task 1`] = `
+Object {
+  "data": Object {
+    "task": Object {
+      "_id": "60b0f43e23e5984df8a6fb8e",
+      "sharedWith": Array [
+        "60b09157c813ff0f9c3b5569",
+      ],
+      "title": "task 4",
+      "user": Object {
+        "_id": "60a0c7d67883212b4c0f6bcc",
+        "email": "user2@email.com",
+        "username": "user2",
+      },
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Tasks should return a user's own task 1`] = `
+Object {
+  "data": Object {
+    "task": Object {
+      "_id": "60b0c3bc8cb1ea51949339e0",
+      "sharedWith": Array [],
+      "title": "abcd",
+      "user": Object {
+        "_id": "60b09157c813ff0f9c3b5569",
+        "email": "email@email.com",
+        "username": "hassen",
+      },
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;

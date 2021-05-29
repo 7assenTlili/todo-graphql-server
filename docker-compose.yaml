@@ -1,0 +1,32 @@
+version: "3"
+services:
+  mongo-server:
+    image: "mongo:latest"
+    container_name: "mongo-db-database"
+    environment:
+      - MONGO_INITDB_DATABASE=mongo-test-db
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    expose:
+      - 27017
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/mongo-db-volume:/data/db
+    restart: always
+  graphql-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    restart: unless-stopped
+    env_file: .env.template
+    environment:
+      - MONGODB_URI=mongodb://admin:password@mongo-server:27017/mongo-test-db?authSource=admin
+      - APP_SECRET=my_app_secret
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongo-server

@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`server e2e User mutations should create a user document if input is valid 1`] = `
+Object {
+  "data": Object {
+    "signup": Object {
+      "email": "valid@email.com",
+      "username": "hassen",
+    },
+  },
+}
+`;
+
+exports[`server e2e User mutations should login if credentials are valid 1`] = `
+Object {
+  "data": Object {
+    "login": Object {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGIxNDQwMDQwNDI5ZTJmODQzOTQ0MGEiLCJlbWFpbCI6InRlc3RAZW1haWwuY29tIiwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNjIyMjMwMDE2fQ.gfj9DByaTVQrEK5wD7Aly3ABN6V4AOc__fTCN68QlDE",
+    },
+  },
+}
+`;
+
+exports[`server e2e User mutations should not create a user document if email is invalid 1`] = `
+Object {
+  "data": Object {
+    "signup": null,
+  },
+  "errors": Array [
+    Object {
+      "extensions": Object {
+        "code": "INTERNAL_SERVER_ERROR",
+      },
+      "locations": Array [
+        Object {
+          "column": 3,
+          "line": 2,
+        },
+      ],
+      "message": "INVALID_EMAIL",
+      "path": Array [
+        "signup",
+      ],
+    },
+  ],
+}
+`;
+
+exports[`server e2e User mutations should not create a user document if password is invalid 1`] = `
+Object {
+  "data": Object {
+    "signup": null,
+  },
+  "errors": Array [
+    Object {
+      "extensions": Object {
+        "code": "INTERNAL_SERVER_ERROR",
+      },
+      "locations": Array [
+        Object {
+          "column": 3,
+          "line": 2,
+        },
+      ],
+      "message": "INVALID_PASSWORD: should be at least 8 characters",
+      "path": Array [
+        "signup",
+      ],
+    },
+  ],
+}
+`;
+
+exports[`server e2e User mutations should not create a user document if username is invalid 1`] = `
+Object {
+  "data": Object {
+    "signup": null,
+  },
+  "errors": Array [
+    Object {
+      "extensions": Object {
+        "code": "INTERNAL_SERVER_ERROR",
+      },
+      "locations": Array [
+        Object {
+          "column": 3,
+          "line": 2,
+        },
+      ],
+      "message": "INVALID_USERNAME: should be at least 3 characters",
+      "path": Array [
+        "signup",
+      ],
+    },
+  ],
+}
+`;
+
+exports[`server e2e User mutations should not login if credentials are invalid 1`] = `
+Object {
+  "data": null,
+  "errors": Array [
+    Object {
+      "extensions": Object {
+        "code": "INTERNAL_SERVER_ERROR",
+      },
+      "locations": Array [
+        Object {
+          "column": 3,
+          "line": 2,
+        },
+      ],
+      "message": "INVALID_PASSWORD: should be at least 8 characters",
+      "path": Array [
+        "login",
+      ],
+    },
+  ],
+}
+`;
